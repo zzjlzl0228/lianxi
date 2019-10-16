@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="index.css" />
+		<script src="jquery.js" type="text/javascript" charset="utf-8"></script>
+
+	</head>
+	<body>
+		<!-- 顶部 -->
+		<div class="top-container">
+			<div class="left">
+				<ul class="list">
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul>
+				<div class="text">Applidium</div>
+				<div class="wifi">
+					<img src="img/wifi.png">
+				</div>
+			</div>
+			<div class="time"></div>
+			<div class="right">
+				<div class="electric-show">100%</div>
+				<div class="electric-img">
+					<img src="img/electric.png">
+				</div>
+			</div>
+		</div>
+		<div class="navContainer">
+			<div class="navContent">
+				<div class="left-close">
+					<img src="img/close.png">
+				</div>
+				<div class="center-title">租用广告位</div>
+				<div class="right-detail">
+					<img src="img/detail.png">
+				</div>
+			</div>
+		</div>
+		<!-- 信息播报 -->
+		<div class="message">
+			<div class="message-content">
+				<!-- 小喇叭 -->
+				<div class="trumpet">
+					<img src="img/xiaolaba.png">
+				</div>
+				<div class="message-text needEllipsis">
+					手机用户156****3221投放了广告，总计展示29...
+				</div>
+				<div class="next">
+					<img src="img/right.png">
+				</div>
+			</div>
+		</div>
+
+		<!-- 广告定制 -->
+		<div class="ad-container">
+			<div class="ad-content">
+				<div class="needFile">
+					<div class="mark">
+						<img src="img/loading.gif">
+					</div>
+					<img src="img/close.png" class="deleteCurrentImage">
+					<div class="upload">
+						<img class="showImage"></img>
+						<div class="upload-inside">
+							<img src="img/cloudupload.png">
+							<div class="upload-text">
+								建议尺寸1200*607
+							</div>
+						</div>
+						<input class="fileClass" type="file" name="" id="img" value="" />
+					</div>
+					<div class="advertising">广告定制</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- 跳转链接 -->
+		<div class="jump-link">
+			<div class="jump-content">
+				<div class="jump-top">
+					<div class="blueLine"></div>
+					<div class="jump-text">跳转链接</div>
+				</div>
+				<div class="jump-bottom">
+					<input type="text" id="email" placeholder="请填写广告位要跳转得网址,可不填" />
+				</div>
+			</div>
+		</div>
+
+		<!-- 选择期限 -->
+		<div class="select-deadline">
+			<div class="select-content">
+				<div class="jump-top">
+					<div class="blueLine"></div>
+					<div class="jump-text">选择期限</div>
+				</div>
+				<div class="select-bottom">
+					<form action="" method="get">
+						<ul>
+							<li>
+								<label style="margin-right: 110px;">
+									<input name="deadline" type="radio" checked="checked" value="1天=188元"/>
+								</label>
+								<label>
+									<input name="deadline" type="radio" value="3天=568元" />3天=568元 
+								</label>
+							</li>
+							<li>
+								<label><input name="deadline" type="radio" value="7天=5288元" />7天=5288元 </label>
+								<label><input name="deadline" type="radio" value="15天=2688元" />15天=2688元 </label>
+							</li>
+							<li>
+								<label><input name="deadline" type="radio" value="30天=5288元 " />30天=5288元 </label>
+							</li>
+							<li>
+								<p>最快可为您安排至2019.08.21-2019.08.27</p>
+							</li>
+						</ul>
+
+
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<div class="contact">
+			<div class="contact-container">
+				<div class="contact-content">
+					<ul>
+						<li>
+							<div class="blueLine"></div>
+							<div class="contact-text">联系电话</div>
+							<input class="phone" type="text" name="mobile" placeholder="请输入您得手机号" />
+						</li>
+						<li>
+							<div class="blueLine"></div>
+							<div class="contact-text">验证码</div>
+							<input class="code" type="text" name="smscode" placeholder="请输入验证码" />
+							<div class="button">获取验证码</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- 获取手机号及验证码 -->
+		<script>
+			// 点击获取验证码按钮进入60s倒计时
+			$(".button").click(function(event) {
+				var phoneReg = /(^1[3|4|5|7|8]\d{9}$)|(^09\d{8}$)/;
+				//这里写发送验证码的代码
+				var time = 60;
+				var phone = $.trim($('.phone').val());
+				if (!phoneReg.test(phone)) {
+					alert(" 请输入有效的手机号码"); 
+					return false;
+				} else {
+					settime($(this));
+				}
+				
+				function settime(obj) {
+					if (time == 0) {
+						$(obj).attr('disabled', false);
+						$(obj).html("点击获取验证码");
+						time = 60;
+						return;
+					} else {
+						$(obj).attr('disabled', true);
+						$(obj).html(time + "秒后重新发送");
+						time--;
+					}
+					setTimeout(function() {
+						settime(obj)
+					}, 1000)
+				}
+			});
+
+
+		</script>
+		<!-- 特别提醒 -->
+		<div class="special">
+			<div class="special-container">
+				<div class="special-text">特别提醒</div>
+				<ul>
+					<li>
+						<div class="text">
+							1.支付完成后可提交审核，1个工作日内
+						</div>
+					</li>
+					<li>
+						<div class="text">
+							2.审核失败时，1日内所付金额退还原微信账号
+						</div>
+					</li>
+					<li>
+						<div class="text">
+							3.付费广告位由主办方开启，费用由主办方收取
+						</div>
+					</li>
+					<li>
+						<div class="text">
+							4.租用广告位审核通过后不予退款
+						</div>
+					</li>
+				</ul>
+				<div class="submit">提交审核</div>
+			</div>
+		</div>
+
+		<script type="text/javascript">
+			$(window).ready(function() {
+
+				// 显示当前时间
+				function showtime() {
+					function getNow(s) {
+						return s < 10 ? '0' + s : s;
+					}
+					var myDate = new Date();
+					var year = myDate.getFullYear(); //获取当前年
+					var month = myDate.getMonth() + 1; //获取当前月
+					var date = myDate.getDate(); //获取当前日
+					var h = myDate.getHours(); //获取当前小时数(0-23)
+					var m = myDate.getMinutes(); //获取当前分钟数(0-59)
+					var s = myDate.getSeconds();
+					var now = year + '-' + getNow(month) + "-" + getNow(date) + " " + getNow(h) + ':' + getNow(m);
+					$('.time').text(now)
+				}
+				showtime()
+				setInterval(function() {
+					// window.location.reload(); //刷新当前页面.
+					showtime()
+				}, 1000)
+				//每一秒刷新一次,若每1分钟刷新一次,由于当前得s数不固定,因此他会在更新之后开始计时1分钟后开始执行定时器得内容
+
+
+				// 上传图片
+				$('.fileClass').on('change', function() {
+					var filePath = $(this).val(), //获取到input的value，里面是文件的路径
+						fileFormat = filePath.substring(filePath.lastIndexOf(".")).toLowerCase(),
+						src = window.URL.createObjectURL(this.files[0]); //转成可以在本地预览的格式
+
+					// 检查是否是图片
+					if (!fileFormat.match(/.png|.jpg|.jpeg/)) {
+						error_prompt_alert('上传错误,文件格式必须为：png/jpg/jpeg');
+						return;
+					} else {
+						$(this).parent().find('.showImage').css('display', 'block');
+						$(this).parent().find('.showImage').attr('src', src);
+						$(this).parent().parent().find('.deleteCurrentImage').css('display', 'block')
+						$(this).parent().find('.upload-inside').css('opacity', '0')
+					}
+					if ($('.showImage').attr('src') == '') {
+						$(this).parent().parent().find('.mark').css('display', 'flex')
+					} else {
+						$(this).parent().parent().find('.mark').css('display', 'none')
+					}
+				})
+				// 点击删除按钮,删除当前显示图片
+				$('.deleteCurrentImage').click(function() {
+					$('.showImage').removeAttr('src', '');
+					$('.showImage').hide()
+					$('.upload-inside').css('opacity', '1')
+					$('.deleteCurrentImage').css('display', 'none')
+				})
+				// 点击提交审核按钮获取到所填写得内容
+				$('.submit').click(function() {
+					var imgSrc = $('.showImage').attr('src')
+					var email = $('#email').val()
+					// 当input没有value值时,所获取得值就为on
+					var deadLine = $('input:radio[name="deadline"]:checked').val()
+					var mobile = $('.phone').val()
+					var smsCode = $('.code').val()
+					console.log(imgSrc)
+					console.log(email)
+					console.log(deadLine)
+					console.log(mobile)
+					console.log(smsCode)
+				})
+			})
+		</script>
+	</body>
+</html>
